@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Apk自动安装</string>
+    <string name="app_desc">支持 VIVO 手机 安装 apk 自动点击安装按钮</string>
 </resources>
