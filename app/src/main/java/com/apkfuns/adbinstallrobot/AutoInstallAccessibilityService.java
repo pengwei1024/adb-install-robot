@@ -8,7 +8,6 @@ import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.Toast;
 
 
-
 /**
  * Created by pengwei on 2017/6/16.
  */
@@ -16,7 +15,8 @@ import android.widget.Toast;
 public class AutoInstallAccessibilityService extends AccessibilityService {
 
     public static String[] installBtnId = new String[]{
-            "vivo:id/vivo_adb_install_ok_button"};
+            "vivo:id/vivo_adb_install_ok_button", "com.android.packageinstaller:id/ok_button"
+    };
 
     @Override
     protected void onServiceConnected() {
@@ -36,7 +36,7 @@ public class AutoInstallAccessibilityService extends AccessibilityService {
             case AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED:
             case AccessibilityEvent.TYPE_NOTIFICATION_STATE_CHANGED:
                 for (String id : installBtnId) {
-                    AccessibilityNodeInfo node = AccessibilityNodeUtil.findNodeById(event.getSource(),id);
+                    AccessibilityNodeInfo node = AccessibilityNodeUtil.findNodeById(event.getSource(), id);
                     if (node != null) {
                         AccessibilityNodeUtil.click(node);
                         Toast.makeText(this, "安装成功", Toast.LENGTH_SHORT).show();
